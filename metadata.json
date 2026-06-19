@@ -1,0 +1,6 @@
+{
+  "name": "One-Page Responsive Business Website",
+  "description": "A premium, Apple-styled responsive business landing page featuring dynamic typography, a dual-state transformation visualizer, interactive FAQ accordion, and smooth lead capture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

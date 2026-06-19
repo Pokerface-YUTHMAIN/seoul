@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>서울IR | 혁신은 여기서 시작됩니다.</title>
+    <!-- Pretendard Web Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <!-- Tailwind CSS Browser CDN v4 -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      /* Apply Pretendard as default font & smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+        font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      body {
+        background-color: #FFFFFF;
+        color: #1D1D1F;
+      }
+      /* Custom focus outline styling for inputs */
+      input:focus {
+        outline: none;
+      }
+      /* Smooth transitions foraccordion */
+      .accordion-panel {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+      }
+      .accordion-panel.active-panel {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-white text-[#1D1D1F] overflow-x-hidden selection:bg-[#FF3B30]/10 selection:text-[#FF3B30]">
+    
+    <!-- React Mount Root (Injected if served via Vite, otherwise gracefully ignored by static loading) -->
+    <div id="root" class="hidden"></div>
+
+    <!-- Apple-Style Gutter Simple Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-black/5">
+      <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+        <a href="#" class="flex items-center space-x-2 font-semibold tracking-tight text-lg hover:opacity-80 transition-opacity">
+          <span class="w-5 h-5 rounded-full bg-[#FF3B30] flex items-center justify-center text-[10px] text-white font-bold">i</span>
+          <span>서울IR</span>
+        </a>
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-[#86868B]">
+          <a href="#services-section" class="hover:text-[#1D1D1F] transition-colors">제품 및 서비스</a>
+          <a href="#features-section" class="hover:text-[#1D1D1F] transition-colors">핵심 경쟁력</a>
+          <a href="#transformation-section" class="hover:text-[#1D1D1F] transition-colors">도입 전후 비교</a>
+          <a href="#faq-section" class="hover:text-[#1D1D1F] transition-colors">자주 묻는 질문</a>
+        </nav>
+        <a 
+          href="#lead-capture-section" 
+          class="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold bg-[#FF3B30] text-white hover:bg-[#E0352B] active:scale-95 transition-all shadow-sm"
+        >
+          소개서 신청
+        </a>
+      </div>
+    </header>
+
+    <!-- ① Hero Section -->
+    <section id="hero-section" class="relative min-h-[90vh] flex flex-col justify-center items-center px-6 overflow-hidden" style="background-color: #ffffff;">
+      <!-- Glow decoration representing media placeholders -->
+      <div class="absolute inset-0 z-0 opacity-10 flex items-center justify-center pointer-events-none">
+        <div class="w-[50vw] h-[50vw] rounded-full filter blur-[120px] bg-gradient-to-tr from-[#FF3B30] to-orange-500 animate-pulse duration-[8000ms]"></div>
+      </div>
+
+      <!-- Customizable Media Asset Badge -->
+      <div class="absolute bottom-6 left-6 z-10 hidden lg:flex items-center space-x-2 text-xs font-mono text-[#86868B] p-3 rounded-xl border border-black/5 bg-white/50 backdrop-blur-sm">
+        <div class="w-2 h-2 rounded-full bg-[#FF3B30] animate-ping"></div>
+        <span>[히어로_배경_파일명.mp4 또는 jpg] 대기 중</span>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto text-center mt-12 mb-8">
+        <!-- Accent Line -->
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-[#F5F5F7] text-[#FF3B30] text-[13px] font-semibold tracking-tight mb-8">
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+          </svg>
+          <span>2026 Next-Gen Business Standard</span>
+        </div>
+
+        <!-- Big Bold Title -->
+        <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-[#1D1D1F] leading-[1.1] mb-8">
+          혁신은 여기서 <br />
+          <span class="text-[#FF3B30] bg-gradient-to-r from-[#FF3B30] to-red-500 bg-clip-text text-transparent">시작됩니다</span>
+        </h1>
+
+        <!-- Subheading -->
+        <p class="text-lg sm:text-xl md:text-2xl text-[#86868B] font-normal leading-relaxed max-w-2xl mx-auto mb-14 px-4" style="border-color: #6666a5; background-color: #ffffff;">
+          우리는 단순한 비즈니스를 넘어, 당신의 상상을 현실로 만드는 가장 세련된 솔루션을 제공합니다. 압도적인 기술력과 간결한 가치를 지금 경험하세요.
+        </p>
+
+        <!-- CTA Action Block -->
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a 
+            href="#lead-capture-section" 
+            class="group relative inline-flex items-center justify-center px-8 py-4 w-full sm:w-auto rounded-full text-base font-semibold bg-[#FF3B30] text-white hover:bg-[#E0352B] hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md shadow-red-500/10"
+          >
+            <span>상세 회사소개서 보기</span>
+            <svg class="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a 
+            href="#services-section"
+            class="inline-flex items-center justify-center px-8 py-4 w-full sm:w-auto rounded-full text-base font-semibold bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#E8E8ED] transition-all active:scale-[0.98]"
+          >
+            서비스 더 알아보기
+          </a>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 opacity-50 animate-bounce">
+        <span class="text-[10px] font-semibold tracking-widest uppercase text-[#86868B]">Scroll</span>
+        <svg class="w-4 h-4 text-[#86868B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </section>
+
+
+    <!-- ② Products & Services Section -->
+    <section id="services-section" class="py-24 sm:py-32 bg-[#F5F5F7] border-y border-black/5">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <!-- Header -->
+        <div class="max-w-3xl mb-16 sm:mb-24">
+          <p class="text-xs font-semibold tracking-wider uppercase text-[#FF3B30] mb-3">Products & Services</p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1D1D1F]">
+            비즈니스의 성장을 견인할<br class="hidden sm:inline" /> 맞춤형 핵심 솔루션 라인업
+          </h2>
+        </div>
+
+        <!-- 3-Column Card Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Card 1 -->
+          <div class="group bg-white rounded-3xl border border-black/5 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-black/5 hover:translate-y-[-4px]">
+            <div class="relative aspect-[4/3] bg-[#E8E8ED] overflow-hidden flex flex-col justify-between p-6">
+              <div class="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-transparent"></div>
+              <div class="relative z-10 flex justify-between items-start">
+                <span class="px-2.5 py-1 rounded bg-[#1D1D1F] text-white text-[10px] font-mono tracking-tight uppercase">[서비스1_이미지.jpg]</span>
+                <span class="text-[10px] font-semibold tracking-wider uppercase text-[#86868B]">Sync Engine</span>
+              </div>
+              <div class="relative z-10 flex flex-col justify-end h-full pt-12 items-center">
+                <div class="w-24 h-24 rounded-2xl bg-white shadow-md flex items-center justify-center border border-black/5 transition-transform group-hover:scale-110 duration-500">
+                  <div class="w-16 h-16 rounded-xl bg-gradient-to-tr from-blue-500 to-purple-400 p-3 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white fill-white/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-8">
+              <p class="text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-2">Cloud Infrastructure</p>
+              <h3 class="text-2xl font-bold tracking-tight text-[#1D1D1F] mb-4">Enterprise Cloud Sync</h3>
+              <p class="text-sm font-normal text-[#86868B] leading-relaxed">
+                모든 기기에서 실시간으로 데이터 전송 및 동기화되는 안전하고 강력한 고지능형 전사적 비즈니스 클라우드 인프라입니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="group bg-white rounded-[24px] border border-black/5 overflow-hidden flex flex-col justify-between transition-all duration-350 hover:shadow-xl hover:shadow-black/5 hover:translate-y-[-4px] apple-shadow">
+            <div class="relative aspect-[4/3] bg-[#E8E8ED] overflow-hidden flex flex-col justify-between p-6">
+              <div class="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-transparent"></div>
+              <div class="relative z-10 flex justify-between items-start">
+                <span class="px-2.5 py-1 rounded bg-[#1D1D1F] text-white text-[10px] font-mono tracking-tight uppercase">[서비스2_이미지.jpg]</span>
+                <span class="text-[10px] font-semibold tracking-wider uppercase text-[#86868B]">AI Agent</span>
+              </div>
+              <div class="relative z-10 flex flex-col justify-end h-full pt-12 items-center">
+                <div class="w-24 h-24 rounded-2xl bg-white shadow-md flex items-center justify-center border border-black/5 transition-transform group-hover:scale-110 duration-500">
+                  <div class="w-16 h-16 rounded-xl bg-gradient-to-tr from-[#FF3B30] to-red-400 p-3 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white fill-white/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polygon points="12 2 2 22 12 17 22 22 12 2"></polygon>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-8">
+              <p class="text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-2">Workflow Automation</p>
+              <h3 class="text-2xl font-bold tracking-tight text-[#1D1D1F] mb-4">AI Workflow Automation</h3>
+              <p class="text-sm font-normal text-[#86868B] leading-relaxed">
+                불필요한 고비용 반복 업무 프로세스를 제거하고, 우리 직원들이 오직 중요한 고객 가치 창출에만 극도로 몰입할 수 있도록 돕습니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="group bg-white rounded-[24px] border border-black/5 overflow-hidden flex flex-col justify-between transition-all duration-350 hover:shadow-xl hover:shadow-black/5 hover:translate-y-[-4px] apple-shadow">
+            <div class="relative aspect-[4/3] bg-[#E8E8ED] overflow-hidden flex flex-col justify-between p-6">
+              <div class="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-transparent"></div>
+              <div class="relative z-10 flex justify-between items-start">
+                <span class="px-2.5 py-1 rounded bg-[#1D1D1F] text-white text-[10px] font-mono tracking-tight uppercase">[서비스3_이미지.jpg]</span>
+                <span class="text-[10px] font-semibold tracking-wider uppercase text-[#86868B]">Analytics Dashboard</span>
+              </div>
+              <div class="relative z-10 flex flex-col justify-end h-full pt-12 items-center">
+                <div class="w-24 h-24 rounded-2xl bg-white shadow-md flex items-center justify-center border border-black/5 transition-transform group-hover:scale-110 duration-500">
+                  <div class="w-16 h-16 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 p-3 flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white fill-white/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-8">
+              <p class="text-xs font-semibold uppercase tracking-wider text-[#86868B] mb-2">Metrics Solution</p>
+              <h3 class="text-2xl font-bold tracking-tight text-[#1D1D1F] mb-4">Advanced Data Analytics</h3>
+              <p class="text-sm font-normal text-[#86868B] leading-relaxed">
+                흩어져 있는 방대한 비즈니스 핵심 지표를 정교하게 시각화하여, 언제나 최상의 타이밍에 명확하고 빠른 데이터 의사결정을 지원합니다.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ③ Key Features Section -->
+    <section id="features-section" class="py-24 sm:py-32 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <!-- Header -->
+        <div class="max-w-3xl mb-20 text-left">
+          <p class="text-xs font-semibold tracking-wider uppercase text-[#FF3B30] mb-3">Key Features</p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1D1D1F]">
+            비교불가한 압도적 가치,<br className="hidden sm:inline" /> 오직 최고만을 타협하지 않고 탑재했습니다
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 sm:gap-8 lg:divide-x lg:divide-black/5">
+          
+          <!-- Strength 1 -->
+          <div class="flex flex-col space-y-6 lg:px-8 first:pl-0 last:pr-0">
+            <div class="text-5xl font-extrabold text-[#FF3B30] font-mono tracking-tight flex items-center justify-between">
+              <span>01</span>
+              <span class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-[#FF3B30]">
+                <svg class="w-5 h-5 fill-[#FF3B30]/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </span>
+            </div>
+            <h3 class="text-2xl font-bold tracking-tight text-[#1D1D1F]">압도적인 전송 속도</h3>
+            <p class="text-base text-[#86868B] font-normal leading-relaxed">
+              차세대 캐시 분산 구조 기술을 채택하여, 기존 비즈니스 엔진 서비스 대비 <strong class="text-[#1D1D1F] font-semibold text-base">최대 250% 더 고속 전송 속도</strong>와 지연 시간 0에 가까운 실시간 스트리밍 처리 인프라를 보증합니다.
+            </p>
+          </div>
+
+          <!-- Strength 2 -->
+          <div class="flex flex-col space-y-6 lg:px-8">
+            <div class="text-5xl font-extrabold text-[#FF3B30] font-mono tracking-tight flex items-center justify-between">
+              <span>02</span>
+              <span class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-[#FF3B30]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </span>
+            </div>
+            <h3 class="text-2xl font-bold tracking-tight text-[#1D1D1F]">금융권 수준의 보안성</h3>
+            <p class="text-base text-[#86868B] font-normal leading-relaxed">
+              모든 엔드투엔드 연결에 첨단 군사 금융 등급의 다중 대칭 암호화 기술을 완벽하게 적용했습니다. 무중단 실시간 분산 서버 백업 아키텍처 지원으로 귀중한 기업 데이터 유실 걱정이 근원적으로 사라집니다.
+            </p>
+          </div>
+
+          <!-- Strength 3 -->
+          <div class="flex flex-col space-y-6 lg:px-8">
+            <div class="text-5xl font-extrabold text-[#FF3B30] font-mono tracking-tight flex items-center justify-between">
+              <span>03</span>
+              <span class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-[#FF3B30]">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>
+                </svg>
+              </span>
+            </div>
+            <h3 class="text-2xl font-bold tracking-tight text-[#1D1D1F]">극도의 직관적이고 세련된 UI</h3>
+            <p class="text-base text-[#86868B] font-normal leading-relaxed">
+              어떠한 불필요한 부연설명이나 가이드 문서도 요구하지 않습니다. 애플 감성의 우아하고 인체공학적인 인터페이스 설계를 그대로 계승하여, 한 번의 터치로 모든 복잡한 작업을 능숙하게 끝마칠 수 있게 돕습니다.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ④ Before & After Section (Interactive Slider) -->
+    <section id="transformation-section" class="py-24 sm:py-32 bg-[#F5F5F7]">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <!-- Header -->
+        <div class="max-w-3xl mb-16 text-left">
+          <p class="text-xs font-semibold tracking-wider uppercase text-[#FF3B30] mb-3">The Transformation</p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1D1D1F]">
+            시스템 도입 전과 후,<br className="hidden sm:inline" /> 단 한 번의 도입으로 달라지는 업무의 생산성
+          </h2>
+          <p class="text-base text-[#86868B] mt-4">
+            아래의 슬라이더 인터랙션을 밀어서 도입 후의 드라마틱하게 변화하는 결과를 즉각적으로 체험해 보세요.
+          </p>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto">
+          
+          <!-- Guide -->
+          <div class="flex justify-between items-center text-xs text-[#86868B] font-semibold uppercase tracking-wider mb-4 px-2">
+            <span class="flex items-center space-x-1"><span class="w-2 h-2 rounded-full bg-slate-400"></span> <span>도입 전 (Before)</span></span>
+            <span class="flex items-center space-x-1"><span class="w-2 h-2 rounded-full bg-[#FF3B30]"></span> <span>도입 후 (After)</span></span>
+          </div>
+
+          <!-- Slider Card Platform -->
+          <div 
+            id="before-after-container"
+            class="relative aspect-video sm:aspect-[2.3/1] bg-[#1D1D1F] rounded-3xl overflow-hidden select-none shadow-2xl border border-black/10 cursor-ew-resize"
+          >
+            
+            <!-- BEFORE BACKGROUND PANEL -->
+            <div class="absolute inset-0 bg-[#2D2D30] text-slate-400 flex flex-col justify-center px-6 sm:px-16 md:px-24">
+              <div class="w-fit px-3 py-1 bg-black/30 rounded-full text-[11px] text-slate-400 font-bold uppercase tracking-wider mb-4 border border-white/5">
+                BEFORE (기존 시스템)
+              </div>
+              <div class="space-y-4 text-left">
+                <h3 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-200">
+                  인력을 무마하는 한계
+                </h3>
+                <p class="text-xs sm:text-sm md:text-lg max-w-md font-normal leading-relaxed text-slate-400">
+                  수동 가동 입력의 본성적인 한계와 비체계적인 소통, 빈번히 터지는 전산 오류로 인해 하루 무의미하게 버려지는 <strong class="text-slate-100 font-semibold">평균 4.2시간의 막대한 경영 리소스</strong> 낭비.
+                </p>
+                <div class="grid grid-cols-2 gap-4 pt-4 max-w-sm">
+                  <div class="border-l border-slate-600 pl-4">
+                    <div class="text-xs text-slate-400">업무 자동화 가동율</div>
+                    <div class="text-xl sm:text-2xl md:text-3xl font-black text-slate-300 font-mono">15% 미만</div>
+                  </div>
+                  <div class="border-l border-slate-600 pl-4">
+                    <div class="text-xs text-slate-400">오류 수정 리드타임</div>
+                    <div class="text-xl sm:text-2xl md:text-3xl font-black text-slate-300 font-mono">평균 3.6시간</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AFTER CLIPPED PANEL -->
+            <div 
+              id="after-panel"
+              class="absolute inset-y-0 right-0 left-0 bg-gradient-to-tr from-[#141416] to-[#251010] text-[#FF3B30] flex flex-col justify-center px-6 sm:px-16 md:px-24 overflow-hidden border-l-2 border-[#FF3B30]"
+              style="clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%)"
+            >
+              <div class="w-full h-full flex flex-col justify-center relative text-left">
+                <div class="absolute right-0 top-0 left-0 bottom-0 pointer-events-none opacity-20 bg-[radial-gradient(#FF3B30_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                <div class="relative z-10">
+                  <div class="w-fit px-3 py-1 bg-[#FF3B30]/10 rounded-full text-[11px] text-[#FF3B30] font-bold uppercase tracking-wider mb-4 border border-[#FF3B30]/20">
+                    AFTER (서울IR 도입 후)
+                  </div>
+                  <div class="space-y-4">
+                    <h3 class="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+                      폭발하는 비즈니스 레벨업
+                    </h3>
+                    <p class="text-xs sm:text-sm md:text-lg max-w-md font-normal leading-relaxed text-slate-300">
+                      기반의 완벽한 자동화 프로세스로 일일 가동력을 <strong class="text-white font-bold">320% 증가</strong>시켰으며, 공정 결함 오류율 0% 수렴 및 연간 고용 리소스 비용 85% 대칭 절감 구조를 즉시 완성합니다.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-4 max-w-sm">
+                      <div class="border-l border-[#FF3B30] pl-4">
+                        <div class="text-xs text-slate-400">업무 극대화 효율성</div>
+                        <div class="text-xl sm:text-2xl md:text-3xl font-black text-white font-mono flex items-center">
+                          <span>+320%</span>
+                          <span class="text-[10px] ml-1 px-1 bg-[#FF3B30] text-white rounded">UP</span>
+                        </div>
+                      </div>
+                      <div class="border-l border-[#FF3B30] pl-4">
+                        <div class="text-xs text-slate-400">오류 및 결함 발생율</div>
+                        <div class="text-xl sm:text-2xl md:text-3xl font-black text-white font-mono">0.00%</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SLIDER HANDLE LINE AND KNOB -->
+            <div 
+              id="slider-handle" 
+              class="absolute inset-y-0 -ml-[1px] pointer-events-none flex flex-col items-center justify-between z-30" 
+              style="left: 50%"
+            >
+              <div class="w-[2px] h-full bg-[#FF3B30]"></div>
+              <div class="absolute top-1/2 -translate-y-1/2 -ml-[18px] w-9 h-9 rounded-full bg-white text-[#FF3B30] flex items-center justify-center shadow-2xl border-2 border-[#FF3B30]">
+                <svg class="w-4 h-4 text-[#FF3B30]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 10h16M4 14h16"></path>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+
+          <p class="text-center text-xs text-[#86868B] mt-5">
+            💡 슬라이더의 중앙 핸들을 터치/마우스 클릭한 상태로 좌우로 부드럽게 움직여 보세요
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ⑤ FAQ (자주 묻는 질문) Section -->
+    <section id="faq-section" class="py-24 sm:py-32 bg-white">
+      <div class="max-w-4xl mx-auto px-6">
+        
+        <!-- Header -->
+        <div class="text-center max-w-3xl mx-auto mb-20">
+          <p class="text-xs font-semibold tracking-wider uppercase text-[#FF3B30] mb-3">FAQ</p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1D1D1F]">
+            가장 많이 질문하시는 사항들을<br className="hidden sm:inline" /> 깔끔히 정리해 드립니다
+          </h2>
+        </div>
+
+        <!-- Accordion container -->
+        <div class="space-y-4">
+          
+          <!-- Accordion Q1 -->
+          <div class="accordion-item border-b border-black/5 py-4 last:border-none">
+            <button class="accordion-btn w-full flex justify-between items-center text-left py-4 text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#1D1D1F] hover:text-[#FF3B30] focus:outline-none transition-colors group cursor-pointer">
+              <span>서비스 도입까지 기간이 얼마나 걸리나요?</span>
+              <span class="accordion-icon w-8 h-8 rounded-full flex items-center justify-center bg-[#F5F5F7] group-hover:bg-[#FF3B30]/5 text-[#1D1D1F] group-hover:text-[#FF3B30] transition-all transform duration-300">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <p class="text-sm sm:text-base text-[#86868B] font-normal leading-relaxed pb-6 pr-6">
+                기존 인프라의 규모에 따라 상이하지만, 평균적으로 영업일 기준 3~5일 이내에 완벽하게 세팅 및 즉시 활성화가 가능하도록 전담 매니저가 신속하게 지원해 드립니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Q2 -->
+          <div class="accordion-item border-b border-black/5 py-4 last:border-none">
+            <button class="accordion-btn w-full flex justify-between items-center text-left py-4 text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#1D1D1F] hover:text-[#FF3B30] focus:outline-none transition-colors group cursor-pointer">
+              <span>기존에 사용하던 데이터와 호환이 되나요?</span>
+              <span class="accordion-icon w-8 h-8 rounded-full flex items-center justify-center bg-[#F5F5F7] group-hover:bg-[#FF3B30]/5 text-[#1D1D1F] group-hover:text-[#FF3B30] transition-all transform duration-300">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <p class="text-sm sm:text-base text-[#86868B] font-normal leading-relaxed pb-6 pr-6">
+                네, Excel, CSV뿐만 아니라 기존에 기업에서 사용하시던 주요 클라우드 서비스 및 데이터베이스 솔루션과의 유연한 임포트/익스포트 인터페이스를 제공하여 유실 없는 안전한 이전을 약속드립니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Q3 -->
+          <div class="accordion-item border-b border-black/5 py-4 last:border-none">
+            <button class="accordion-btn w-full flex justify-between items-center text-left py-4 text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#1D1D1F] hover:text-[#FF3B30] focus:outline-none transition-colors group cursor-pointer">
+              <span>초기 구축 비용 외에 추가 비용이 발생하나요?</span>
+              <span class="accordion-icon w-8 h-8 rounded-full flex items-center justify-center bg-[#F5F5F7] group-hover:bg-[#FF3B30]/5 text-[#1D1D1F] group-hover:text-[#FF3B30] transition-all transform duration-300">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <p class="text-sm sm:text-base text-[#86868B] font-normal leading-relaxed pb-6 pr-6">
+                제시 계약해 드리는 기본 라이선스 비용 외에 어떠한 숨겨진 추가 비용도 청구되지 않습니다. 신규 인프라가 대칭 확장되거나 추가 커스텀 라이선스가 요구되는 특수한 경우에만 고객사와 투명하게 선협의 후 집행합니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Q4 -->
+          <div class="accordion-item border-b border-black/5 py-4 last:border-none">
+            <button class="accordion-btn w-full flex justify-between items-center text-left py-4 text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#1D1D1F] hover:text-[#FF3B30] focus:outline-none transition-colors group cursor-pointer">
+              <span>소규모 스타트업이나 개인 비즈니스도 사용이 가능한가요?</span>
+              <span class="accordion-icon w-8 h-8 rounded-full flex items-center justify-center bg-[#F5F5F7] group-hover:bg-[#FF3B30]/5 text-[#1D1D1F] group-hover:text-[#FF3B30] transition-all transform duration-300">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <p class="text-sm sm:text-base text-[#86868B] font-normal leading-relaxed pb-6 pr-6">
+                물론입니다. 본 솔루션은 비즈니스의 성장 속도에 부응하는 고도로 탄력적인 구독 요금제를 설계하고 있어, 1인 창업가부터 수백 명 규모의 중소벤처 및 중견 기업까지 규모에 최적화된 형태로 유연하게 시작하실 수 있습니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Accordion Q5 -->
+          <div class="accordion-item border-b border-black/5 py-4 last:border-none">
+            <button class="accordion-btn w-full flex justify-between items-center text-left py-4 text-base sm:text-lg md:text-xl font-bold tracking-tight text-[#1D1D1F] hover:text-[#FF3B30] focus:outline-none transition-colors group cursor-pointer">
+              <span>도입 후 유지보수 및 기술 지원 서비스는 어떻게 제공되나요?</span>
+              <span class="accordion-icon w-8 h-8 rounded-full flex items-center justify-center bg-[#F5F5F7] group-hover:bg-[#FF3B30]/5 text-[#1D1D1F] group-hover:text-[#FF3B30] transition-all transform duration-300">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+            <div class="accordion-panel">
+              <p class="text-sm sm:text-base text-[#86868B] font-normal leading-relaxed pb-6 pr-6">
+                도입 완료 즉시 모든 파트너 기업 고객사에 최고 전문성 수준의 전담 엔지니어가 매칭됩니다. 24/7 연중무휴 긴급 모니터링 시스템을 구축하여 장애를 방지하고신속한 실시간 응대를 책임지고 있습니다.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ⑥ Lead Capture & Footer Section -->
+    <section id="lead-capture-section" class="py-24 sm:py-32 bg-[#F5F5F7] border-t border-black/5 relative overflow-hidden">
+      <!-- Decor Grid backdrop -->
+      <div class="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(ellipse_at_center,black_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+      <div class="max-w-3xl mx-auto px-6 relative z-10">
+        
+        <!-- Header -->
+        <div class="text-center mb-16">
+          <div class="w-14 h-14 rounded-3xl bg-[#FF3B30] text-white flex items-center justify-center mx-auto mb-6 shadow-md shadow-red-500/20">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <p class="text-xs font-semibold tracking-wider uppercase text-[#FF3B30] mb-3">Lead Capture</p>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[#1D1D1F]">
+            회사 소개서 즉시 다운로드 신청
+          </h2>
+          <p class="text-sm sm:text-base text-[#86868B] mt-3 max-w-md mx-auto">
+            간단한 기본 정보를 작성하여 인증해주시면, 파트너 특화 마스터 회사소개서를 즉시 발송 및 다운로드해 드립니다.
+          </p>
+        </div>
+
+        <!-- Submission Content Switch Wrapper -->
+        <div id="form-container">
+          <!-- FORM -->
+          <form id="lead-form" class="bg-white rounded-3xl border border-black/5 shadow-xl p-8 sm:p-12 space-y-8 text-left">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Company Name -->
+              <div>
+                <label for="compName" class="block text-xs font-semibold uppercase tracking-wider text-[#1D1D1F] mb-2.5">
+                  1. 회사 이름 <span class="text-[#FF3B30] font-bold">*</span>
+                </label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointers-events-none text-slate-400">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                      <line x1="9" y1="22" x2="9" y2="16"></line>
+                      <line x1="15" y1="22" x2="15" y2="16"></line>
+                      <line x1="9" y1="16" x2="15" y2="16"></line>
+                      <path d="M8 6h.01M16 6h.01M8 10h.01M16 10h.01"></path>
+                    </svg>
+                  </span>
+                  <input
+                    id="compName"
+                    type="text"
+                    placeholder="예시: (주)서울IR"
+                    class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-black/5 bg-[#F5F5F7] focus:bg-white text-sm text-[#1D1D1F] placeholder-slate-400 transition-all focus:ring-2 focus:ring-[#FF3B30]/10 focus:border-[#FF3B30]"
+                  />
+                </div>
+                <p id="error-company" class="hidden text-xs text-[#FF3B30] font-medium mt-1.5 items-center">
+                  <svg class="w-3.5 h-3.5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  회사 이름을 입력해 주세요.
+                </p>
+              </div>
+
+              <!-- Manager Name -->
+              <div>
+                <label for="mgrName" class="block text-xs font-semibold uppercase tracking-wider text-[#1D1D1F] mb-2.5">
+                  2. 담당자 이름 <span class="text-[#FF3B30] font-bold">*</span>
+                </label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointers-events-none text-slate-400">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                  </span>
+                  <input
+                    id="mgrName"
+                    type="text"
+                    placeholder="예시: 홍길동"
+                    class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-black/5 bg-[#F5F5F7] focus:bg-white text-sm text-[#1D1D1F] placeholder-slate-400 transition-all focus:ring-2 focus:ring-[#FF3B30]/10 focus:border-[#FF3B30]"
+                  />
+                </div>
+                <p id="error-manager" class="hidden text-xs text-[#FF3B30] font-medium mt-1.5 items-center">
+                  <svg class="w-3.5 h-3.5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  담당자 이름을 입력해 주세요.
+                </p>
+              </div>
+            </div>
+
+            <!-- Email Address -->
+            <div>
+              <label for="mgrEmail" class="block text-xs font-semibold uppercase tracking-wider text-[#1D1D1F] mb-2.5">
+                3. 메일 주소 <span class="text-[#FF3B30] font-bold">*</span>
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-4 flex items-center pointers-events-none text-slate-400">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </span>
+                <input
+                  id="mgrEmail"
+                  type="email"
+                  placeholder="예시: info@company.com"
+                  class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-black/5 bg-[#F5F5F7] focus:bg-white text-sm text-[#1D1D1F] placeholder-slate-400 transition-all focus:ring-2 focus:ring-[#FF3B30]/10 focus:border-[#FF3B30]"
+                />
+              </div>
+              <p id="error-email" class="hidden text-xs text-[#FF3B30] font-medium mt-1.5 items-center">
+                <svg class="w-3.5 h-3.5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                올바른 이메일 이메일 주소를 입력해 주세요.
+              </p>
+            </div>
+
+            <!-- Agree Terms -->
+            <div class="pt-2">
+              <label class="flex items-start select-none cursor-pointer group">
+                <input
+                  id="agreeCheck"
+                  type="checkbox"
+                  class="absolute opacity-0 w-0 h-0"
+                />
+                <div id="check-box-visual" class="w-5.5 h-5.5 rounded-md border border-slate-300 bg-[#F5F5F7] flex items-center justify-center transition-all duration-300 mt-0.5 mr-3 group-hover:border-[#FF3B30]">
+                  <svg class="w-4 h-4 text-white hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span class="text-xs text-[#86868B] leading-relaxed">
+                  개인정보 수집 및 이용 동의 (필수): 고성능 파트너 정보 전달, 상담 안내 피드 발송 등 비즈니스 소통 지원 목적으로 유입 정보를 임시 데이터베이스에 보관 및 안전하게 활용합니다.
+                </span>
+              </label>
+              <p id="error-agree" class="hidden text-xs text-[#FF3B30] font-medium mt-1.5 items-center">
+                <svg class="w-3.5 h-3.5 mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                개인정보 동의가 필요합니다.
+              </p>
+            </div>
+
+            <!-- Submit button -->
+            <div class="pt-4">
+              <button
+                type="submit"
+                class="w-full flex items-center justify-center px-8 py-4 bg-[#FF3B30] hover:bg-[#E0352B] active:scale-[0.99] text-white rounded-xl font-bold tracking-tight transition-all duration-300 shadow-lg shadow-red-500/10 cursor-pointer"
+              >
+                <span>상세 회사소개서 보기</span>
+                <svg class="w-5 h-5 ml-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Footer Block -->
+      <footer class="relative z-10 max-w-6xl mx-auto px-6 mt-20 pt-12 border-t border-black/5 text-center sm:text-left">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8 text-[#86868B] text-xs leading-relaxed font-sans font-normal">
+          <div>
+            <div class="font-semibold text-[#1D1D1F] text-sm mb-2 flex items-center justify-center sm:justify-start space-x-1">
+              <span class="w-4 h-4 rounded-full bg-[#FF3B30] flex items-center justify-center text-[8px] text-white font-bold">i</span>
+              <span>(주)서울IR</span>
+            </div>
+            <p class="max-w-xl text-[#86868B]">
+              회사명: (주)서울IR | 대표: 김혁신 | 주소: 서울특별시 강남구 테헤란로 123 | 사업자등록번호: 120-12-34567<br />
+              통신판매업신고: 제 2026-서울강남-1049호 | 개인정보관리책임자: 김혁신 (privacy@innovation.co.kr)
+            </p>
+          </div>
+          <div class="text-center md:text-right space-y-1">
+            <div>Copyright © 2026 All Rights Reserved.</div>
+            <div class="text-[10px] text-slate-400">Design Inspired by Apple Minimalism. Strictly adhering to layout specifications.</div>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- Vanilla Javascript Interactions and States logic -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        
+        // --- 1. Before & After Slider Logic ---
+        const container = document.getElementById("before-after-container");
+        const afterPanel = document.getElementById("after-panel");
+        const sliderHandle = document.getElementById("slider-handle");
+        
+        let isSliding = false;
+
+        function updateSlider(clientX) {
+          if (!container) return;
+          const rect = container.getBoundingClientRect();
+          const x = clientX - rect.left;
+          const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+          
+          if (afterPanel && sliderHandle) {
+            afterPanel.style.clipPath = `polygon(${percentage}% 0%, 100% 0%, 100% 100%, ${percentage}% 100%)`;
+            sliderHandle.style.left = `${percentage}%`;
+          }
+        }
+
+        if (container) {
+          container.addEventListener("mousedown", () => isSliding = true);
+          window.addEventListener("mouseup", () => isSliding = false);
+          
+          container.addEventListener("mousemove", (e) => {
+            if (!isSliding && e.buttons !== 1) return;
+            updateSlider(e.clientX);
+          });
+
+          container.addEventListener("touchstart", () => isSliding = true);
+          window.addEventListener("touchend", () => isSliding = false);
+          
+          container.addEventListener("touchmove", (e) => {
+            if (e.touches.length > 0) {
+              updateSlider(e.touches[0].clientX);
+            }
+          });
+        }
+
+
+        // --- 2. FAQ Accordion Logic ---
+        const accordions = document.querySelectorAll(".accordion-item");
+        
+        // Open the first accordion item by default
+        if (accordions.length > 0) {
+          const firstPanel = accordions[0].querySelector(".accordion-panel");
+          const firstIcon = accordions[0].querySelector(".accordion-icon");
+          if (firstPanel) {
+            firstPanel.classList.add("active-panel");
+            firstPanel.style.maxHeight = "200px";
+            firstPanel.style.opacity = "1";
+          }
+          if (firstIcon) {
+            firstIcon.style.transform = "rotate(180deg)";
+          }
+        }
+
+        accordions.forEach((item) => {
+          const btn = item.querySelector(".accordion-btn");
+          const panel = item.querySelector(".accordion-panel");
+          const icon = item.querySelector(".accordion-icon");
+
+          if (btn && panel) {
+            btn.addEventListener("click", () => {
+              const isOpen = panel.classList.contains("active-panel");
+
+              // Close all open panels
+              accordions.forEach((otherItem) => {
+                const otherPanel = otherItem.querySelector(".accordion-panel");
+                const otherIcon = otherItem.querySelector(".accordion-icon");
+                if (otherPanel) {
+                  otherPanel.classList.remove("active-panel");
+                  otherPanel.style.maxHeight = "0";
+                  otherPanel.style.opacity = "0";
+                }
+                if (otherIcon) {
+                  otherIcon.style.transform = "rotate(0deg)";
+                }
+              });
+
+              // Toggle selected
+              if (!isOpen) {
+                panel.classList.add("active-panel");
+                panel.style.maxHeight = "200px";
+                panel.style.opacity = "1";
+                if (icon) {
+                  icon.style.transform = "rotate(180deg)";
+                }
+              }
+            });
+          }
+        });
+
+
+        // --- 3. Lead Form Checkbox & Validation ---
+        const agreeCheck = document.getElementById("agreeCheck");
+        const checkBoxVisual = document.getElementById("check-box-visual");
+        
+        if (agreeCheck && checkBoxVisual) {
+          agreeCheck.addEventListener("change", function() {
+            const checkIcon = checkBoxVisual.querySelector("svg");
+            if (agreeCheck.checked) {
+              checkBoxVisual.classList.add("bg-[#FF3B30]", "border-[#FF3B30]");
+              checkBoxVisual.classList.remove("border-slate-300", "bg-[#F5F5F7]");
+              if (checkIcon) checkIcon.classList.remove("hidden");
+            } else {
+              checkBoxVisual.classList.remove("bg-[#FF3B30]", "border-[#FF3B30]");
+              checkBoxVisual.classList.add("border-slate-300", "bg-[#F5F5F7]");
+              if (checkIcon) checkIcon.classList.add("hidden");
+            }
+          });
+        }
+
+        const leadForm = document.getElementById("lead-form");
+        const formContainer = document.getElementById("form-container");
+
+        if (leadForm && formContainer) {
+          leadForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            // Inputs
+            const compName = document.getElementById("compName").value.trim();
+            const mgrName = document.getElementById("mgrName").value.trim();
+            const mgrEmail = document.getElementById("mgrEmail").value.trim();
+            const agreed = document.getElementById("agreeCheck").checked;
+
+            // Error blocks
+            const errorComp = document.getElementById("error-company");
+            const errorMgr = document.getElementById("error-manager");
+            const errorEmail = document.getElementById("error-email");
+            const errorAgree = document.getElementById("error-agree");
+
+            let isValid = true;
+
+            // Validate Company
+            if (!compName) {
+              errorComp.classList.remove("hidden");
+              errorComp.classList.add("flex");
+              isValid = false;
+            } else {
+              errorComp.classList.add("hidden");
+              errorComp.classList.remove("flex");
+            }
+
+            // Validate Manager Name
+            if (!mgrName) {
+              errorMgr.classList.remove("hidden");
+              errorMgr.classList.add("flex");
+              isValid = false;
+            } else {
+              errorMgr.classList.add("hidden");
+              errorMgr.classList.remove("flex");
+            }
+
+            // Validate Email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!mgrEmail || !emailRegex.test(mgrEmail)) {
+              errorEmail.classList.remove("hidden");
+              errorEmail.classList.add("flex");
+              isValid = false;
+            } else {
+              errorEmail.classList.add("hidden");
+              errorEmail.classList.remove("flex");
+            }
+
+            // Validate Agreement
+            if (!agreed) {
+              errorAgree.classList.remove("hidden");
+              errorAgree.classList.add("flex");
+              isValid = false;
+            } else {
+               errorAgree.classList.add("hidden");
+              errorAgree.classList.remove("flex");
+            }
+
+            if (isValid) {
+              // Google Apps Script Web App URL Integration
+              // Please deploy your Google Apps Script as a Web App (with 'Anyone' access) and paste its URL here:
+              const appsScriptUrl = "https://script.google.com/macros/s/AKfycbwmdqdFz0S5Q_9UP1lLvrsk_KyARV_mx_9oOvC8UtzDQMDAUdVagjAyqKqfzfEtMn0X/exec";
+
+              if (appsScriptUrl) {
+                fetch(appsScriptUrl, {
+                  method: "POST",
+                  mode: "no-cors",
+                  headers: {
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify({
+                    companyName: compName,
+                    contactName: mgrName,
+                    email: mgrEmail
+                  })
+                }).catch(function(error) {
+                  console.error("Error sending data to Google Sheets Apps Script:", error);
+                });
+              }
+
+              // Smoothly Transition to Success Card with simulated progress
+              formContainer.innerHTML = `
+                <div class="bg-white rounded-3xl border border-black/5 shadow-2xl p-10 sm:p-14 text-center space-y-8 animate-pulse">
+                  <div class="w-20 h-20 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto mb-2 shadow-inner">
+                    <div class="relative w-12 h-12 flex items-center justify-center">
+                      <svg class="w-full h-full transform -rotate-90">
+                        <circle cx="24" cy="24" r="20" stroke="#f3f4f6" stroke-width="4" fill="transparent" />
+                        <circle id="progress-circle" cx="24" cy="24" r="20" stroke="#10b981" stroke-width="4" fill="transparent" stroke-dasharray="125.6" stroke-dashoffset="125.6" />
+                      </svg>
+                      <span id="progress-text" class="absolute text-[10px] font-mono font-bold text-emerald-600">0%</span>
+                    </div>
+                  </div>
+                  <div class="space-y-3">
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-[#1D1D1F]">
+                      회사소개서 빌드 및 암호화 전송 중...
+                    </h3>
+                    <p class="text-sm text-[#86868B] max-w-md mx-auto">
+                      입력하신 파트너사 정보(${compName})에 맞춤화한 최신 회사소개서 PDF 자료를 암호화 모듈에서 생성하고 데이터 전송 로를 연동하고 있습니다.
+                    </p>
+                  </div>
+                </div>
+              `;
+
+              const progressCircle = document.getElementById("progress-circle");
+              const progressText = document.getElementById("progress-text");
+              let progress = 0;
+
+              const interval = setInterval(() => {
+                progress += 5;
+                if (progress >= 100) {
+                  clearInterval(interval);
+                  
+                  // Automatically open the PDF file in a new window/tab upon successful completion
+                  try {
+                    window.open("https://drive.google.com/file/d/1E4iAT0nojs1IBnpo8ebGLywdnx73FUQV/view?usp=drive_link", "_blank");
+                  } catch (e) {
+                    console.error("Popup window block prevented opening PDF:", e);
+                  }
+
+                  // Show completed success state
+                  formContainer.innerHTML = `
+                    <div class="bg-white rounded-3xl border border-black/5 shadow-2xl p-10 sm:p-14 text-center space-y-8">
+                      <div class="w-20 h-20 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center mx-auto mb-2 shadow-inner">
+                        <svg class="w-12 h-12 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                          <ellipse cx="12" cy="12" rx="10" ry="10"></ellipse>
+                        </svg>
+                      </div>
+                      <div class="space-y-3">
+                        <h3 class="text-2xl sm:text-3xl font-extrabold text-[#1D1D1F]">
+                          신청이 안전하게 완료되었습니다!
+                        </h3>
+                        <p class="text-sm text-[#86868B] max-w-md mx-auto">
+                          신청하신 정보로 서울IR 마스터 브리프 팩 전송 과정이 성료되었습니다. 또한 아래 버튼을 눌러 로컬 기기에 즉시 다운로드하거나 저장할 수 있습니다.
+                        </p>
+                      </div>
+                      
+                      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-sm mx-auto pt-4">
+                        <a
+                          href="https://drive.google.com/file/d/1E4iAT0nojs1IBnpo8ebGLywdnx73FUQV/view?usp=drive_link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="w-full inline-flex items-center justify-center px-6 py-3.5 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white rounded-xl font-bold transition-all shadow-md shadow-emerald-500/10 cursor-pointer"
+                        >
+                          <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                          <span>PDF 즉시 다운로드</span>
+                        </a>
+                        <button
+                          onclick="location.reload();"
+                          class="w-full inline-flex items-center justify-center px-6 py-3.5 bg-[#F5F5F7] hover:bg-[#E8E8ED] active:scale-95 text-[#1D1D1F] rounded-xl font-semibold transition-all cursor-pointer"
+                        >
+                          <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.19"></path></svg>
+                          <span>양식 초기화</span>
+                        </button>
+                      </div>
+
+                      <div class="p-4 rounded-2xl bg-[#F5F5F7] text-left text-xs font-mono text-[#86868B] space-y-1 max-w-md mx-auto">
+                        <div>• 기업명: ${compName}</div>
+                        <div>• 성함: ${mgrName}</div>
+                        <div>• 주소: ${mgrEmail}</div>
+                        <div class="text-emerald-600 font-semibold">• 동의 여부: YES (보안 인증)</div>
+                      </div>
+                    </div>
+                  `;
+                } else {
+                  if (progressCircle && progressText) {
+                    const offset = 125.6 - (125.6 * progress) / 100;
+                    progressCircle.style.strokeDashoffset = offset;
+                    progressText.textContent = `${progress}%`;
+                  }
+                }
+              }, 40);
+            }
+          });
+        }
+
+      });
+    </script>
+  </body>
+</html>
